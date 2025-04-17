@@ -1,0 +1,148 @@
+
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OSAR ROB</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body, html {
+      height: 100%;
+      font-family: 'Cairo', sans-serif;
+      color: white;
+      overflow-x: hidden;
+    }
+    .video-bg {
+      position: fixed;
+      right: 0;
+      bottom: 0;
+      min-width: 100%;
+      min-height: 100%;
+      z-index: -1;
+      object-fit: cover;
+    }
+    .overlay {
+      background: rgba(0, 0, 0, 0.7);
+      padding-bottom: 60px;
+    }
+    header {
+      background: linear-gradient(90deg, #00ffd5, #7a00ff);
+      padding: 20px;
+      text-align: center;
+    }
+    header img {
+      height: 80px;
+    }
+    .hero {
+      text-align: center;
+      padding: 100px 20px;
+    }
+    .hero h1 {
+      font-size: 48px;
+      color: #00ffd5;
+      text-shadow: 2px 2px 5px #000;
+    }
+    .countdown {
+      font-size: 28px;
+      margin-top: 20px;
+      color: #fff;
+    }
+    .section {
+      background: rgba(0, 0, 0, 0.7);
+      padding: 60px 20px;
+      text-align: center;
+      margin: 20px;
+      border-radius: 16px;
+    }
+    .section h2 {
+      font-size: 32px;
+      margin-bottom: 20px;
+      color: #7a00ff;
+    }
+    .btn {
+      background: #00ffd5;
+      padding: 12px 30px;
+      color: #000;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+      margin-top: 15px;
+      display: inline-block;
+      transition: 0.3s;
+    }
+    .btn:hover {
+      background: #7a00ff;
+      color: white;
+    }
+    footer {
+      background: #111;
+      padding: 30px 20px;
+      text-align: center;
+      color: #888;
+    }
+  </style>
+</head>
+<body>
+  <video autoplay muted loop class="video-bg">
+    <source src="https://cdn.discordapp.com/attachments/1229723871732625450/1230479439989424179/roblox_bg.mp4" type="video/mp4">
+  </video>
+
+  <div class="overlay">
+    <header>
+      <img src="logo.png" alt="OSAR ROB Logo" />
+    </header>
+
+    <section class="hero">
+      <h1>مرحباً بك في عالم OSAR ROB</h1>
+      <p>كل يوم بث مباشر 10 صباحاً بتوقيت مصر – تحديات، جوائز، مغامرات لا تنتهي!</p>
+      <div class="countdown" id="countdown"></div>
+      <a class="btn" href="https://youtube.com/@osar-d3t?feature=shared">شاهد آخر البث المباشر</a>
+    </section>
+
+    <section class="section">
+      <h2>انضم إلى مجتمعنا</h2>
+      <a class="btn" href="https://discord.gg/DQTV7DNP2K">انضم لديسكورد</a>
+    </section>
+
+    <section class="section">
+      <h2>تقديم الإدارة</h2>
+      <p>هل لديك شغف بالإدارة؟ قدم الآن لتكون جزء من فريقنا!</p>
+      <a class="btn" href="https://forms.gle/sqRxNuZePNsxoTQ87">تقديم إدارة</a>
+    </section>
+
+    <section class="section">
+      <h2>قيّم الإدارة</h2>
+      <p>شاركنا رأيك وساعدنا في التطوير!</p>
+      <a class="btn" href="https://forms.gle/wLY9H8KP4resngVy9">تقييم الإدارة</a>
+    </section>
+
+    <footer>
+      © 2025 OSAR ROB - جميع الحقوق محفوظة
+    </footer>
+  </div>
+
+  <script>
+    function updateCountdown() {
+      const now = new Date();
+      const nextLive = new Date();
+      nextLive.setHours(10, 0, 0, 0);
+      if (now > nextLive) {
+        nextLive.setDate(now.getDate() + 1);
+      }
+      const diff = nextLive - now;
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+      document.getElementById("countdown").textContent = `البث القادم يبدأ خلال: ${hours} ساعة ${minutes} دقيقة ${seconds} ثانية`;
+    }
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+  </script>
+</body>
+</html>
